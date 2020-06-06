@@ -8,7 +8,7 @@ function Contact()
    return(
        <div className="container">
             <div className="row">
-                <Breadcrumb className="col-12">
+                <Breadcrumb >
                     <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
                     <BreadcrumbItem active>Contact Us</BreadcrumbItem>
                 </Breadcrumb>
