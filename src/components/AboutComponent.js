@@ -2,32 +2,31 @@ import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-function RenderLeader({leaders})
+function RenderLeader({leader})
 {
     return(
-        <Media list>
-            {leaders.map((leader) => {
-                return(
-                    <div id={leader.id}>
-                        <Media tag="li">
-                            <Media left middle className=" p-2">
-                                <Media object src={leader.image} alt={leader.name}/>
-                            </Media>
-                            <Media body className="ml-5 p-2">
-                                <Media heading >{leader.name}</Media>
-                                <p>{leader.designation}</p>
-                                <p>{leader.description}</p>
-                            </Media>
-                        </Media>
-                    </div>
-                );
-            })} 
-        </Media>
+        <div id={leader.id}>
+            <Media tag="li">
+                <Media left middle className=" p-2">
+                    <Media object src={leader.image} alt={leader.name}/>
+                </Media>
+                <Media body className="ml-5 p-2">
+                    <Media heading >{leader.name}</Media>
+                        <p>{leader.designation}</p>
+                        <p>{leader.description}</p>
+                    </Media>
+            </Media>
+        </div>
     );
 }
 
 function About(props) {
 
+    const leaders = props.leaders.map((leader) => {
+        return (
+            <RenderLeader leader={leader} />
+        );
+    });
 
     return(
         <div className="container">
@@ -84,7 +83,9 @@ function About(props) {
                     <h2>Corporate Leadership</h2>
                 </div>
                 <div className="col-12 col-md-12">
-                        <RenderLeader leaders={props.leaders} />
+                    <Media list>
+                        {leaders}
+                    </Media>
                 </div>
             </div>
         </div>
