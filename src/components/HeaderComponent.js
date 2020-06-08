@@ -1,6 +1,7 @@
 import React from 'react';
-import {Navbar, NavbarBrand, Nav ,NavItem,NavbarToggler ,Collapse,  Jumbotron} from 'reactstrap';
+import {Navbar, NavbarBrand, Nav ,NavItem,NavbarToggler ,Collapse,  Jumbotron, Modal, ModalHeader, ModalBody, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import {NavLink} from 'react-router-dom';
+import '../App.css';
 
 class Header extends React.Component
 {   
@@ -8,10 +9,21 @@ class Header extends React.Component
     {
         super(props);
         this.toggleNav=this.toggleNav.bind(this);
+        this.toggleModal=this.toggleModal.bind(this);
+        this.handleLogin=this.handleLogin.bind(this);
+
         this.state={
-            isNavOpen:false
+            isNavOpen:false,
+            isModalOpen:false
         };
         
+    }
+
+    toggleModal()
+    {
+        this.setState({
+            isModalOpen: !this.state.isModalOpen
+        });
     }
 
     toggleNav()
@@ -19,6 +31,13 @@ class Header extends React.Component
         this.setState({
             isNavOpen: !this.state.isNavOpen
         });
+    }
+
+    handleLogin(event)
+    {
+        this.toggleModal();
+        alert("Username: "+this.username.value+"  Password : "+this.password.value+" Remember: "+this.remember.value);
+        event.preventDefault();
     }
 
     render()
@@ -38,6 +57,13 @@ class Header extends React.Component
                             <NavItem ><NavLink className="nav-link" to="/menu"><span className="fa fa-list fa-lg"></span>Menu </NavLink> </NavItem>
                             <NavItem ><NavLink className="nav-link" to="/contactus"><span className="fa fa-address-card fa-lg"></span>Contact </NavLink> </NavItem>
                         </Nav>
+                        <Nav navbar className="ml-auto">
+                            <NavItem>
+                                <Button outline onClick={this.toggleModal}>
+                                    <span className="fa fa-sign-in"></span>Login
+                                </Button>
+                            </NavItem>
+                        </Nav>
                     </Collapse>
                 </div>
             </Navbar>
@@ -52,6 +78,42 @@ class Header extends React.Component
                     </div>
                 </div>
             </Jumbotron> 
+
+            {/*--Modal for login -- */}
+            <Modal id="loginModal" isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+                <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
+                <ModalBody>
+                    <Form onSubmit={this.handleLogin}>
+                        <FormGroup>
+                            <Label  htmlFor="username">Username</Label>
+                            <Input  type="text" 
+                            id="username"
+                            name="username"
+                            placeholder="Enter Username"
+                            innerRef={(input) =>this.username =input }
+                            />
+                        </FormGroup>
+                        <FormGroup>
+                            <Label  htmlFor="password">Password</Label>
+                            <Input  type="password" 
+                            id="password"
+                            name="password"
+                            placeholder="Enter Password"
+                            innerRef={(input) =>this.password =input }/>
+                        </FormGroup>
+                        <FormGroup check>
+                            <Label check>
+                            <Input  type="checkbox" 
+                            id="remember"
+                            name="remeber"
+                            innerRef={(input) =>this.remember =input }/>{' '}
+                            <strong>Remember me</strong>
+                            </Label>
+                        </FormGroup>
+                        <Button type="submit" value="submit" color="primary">Login</Button>
+                    </Form>
+                </ModalBody>
+            </Modal>
             </div>
         );
     }
