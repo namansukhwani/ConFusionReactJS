@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {Breadcrumb, BreadcrumbItem,Row,Button, Label,Col} from 'reactstrap';
-import {Control,LocalForm,Errors} from 'react-redux-form';
+import {Control,Form,Errors,actions} from 'react-redux-form';
 import '../App.css';
 
 const required=(val) =>val && val.length;
@@ -26,6 +26,7 @@ class Contact extends React.Component
     {  
         alert("current state is "+ JSON.stringify(values));
         //event.preventDefault();
+        this.props.resetFeedbackForm();
     }
 
     handleUpdate(form)
@@ -77,7 +78,7 @@ class Contact extends React.Component
                         <h3>Send us Your Feedback</h3>                       
                      </div>
                      <div className="col-12 col-md-9">
-                         <LocalForm onSubmit={(values) => this.handleSubmit(values)}
+                         <Form model="feedback" onSubmit={(values) => this.handleSubmit(values)}
                          onUpdate={(form) => this.handleUpdate(form)}> 
                             <Row className="form-group">
                                 <Label className="col-12 col-md-2" htmlFor="firstname">First Name</Label>
@@ -224,7 +225,7 @@ class Contact extends React.Component
                                 </Col>
                             </Row>
                             
-                         </LocalForm>
+                         </Form>
                      </div>
                  </div>
             </div>
