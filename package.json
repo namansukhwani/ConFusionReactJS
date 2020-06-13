@@ -10,7 +10,7 @@
     "bootstrap-social": "^5.1.1",
     "cross-fetch": "^3.0.4",
     "font-awesome": "^4.7.0",
-    "jquery": "^1.12.4",
+    "jquery": "^3.5.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-animation-components": "^3.0.0",
