@@ -3,13 +3,14 @@ import { Card, CardImg, CardImgOverlay,CardTitle ,Breadcrumb ,BreadcrumbItem } f
 import '../App.css';
 import {Link} from 'react-router-dom';
 import {Loading} from './LoadingComponent'
+import {baseUrl} from '../shared/baseUrl'
 
 function RenderMenuItem({dish })
 {
     return(
         <Card>
             <Link to={`/menu/${dish.id}`} className=" text-dark" >
-                <CardImg width="100%" src={dish.image} alt={dish.name}/>
+                <CardImg width="100%" src={baseUrl+dish.image} alt={dish.name}/>
                 <CardImgOverlay>
                     <CardTitle><strong>{dish.name}</strong></CardTitle>   
                 </CardImgOverlay>
