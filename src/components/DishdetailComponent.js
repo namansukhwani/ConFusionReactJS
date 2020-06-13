@@ -31,7 +31,7 @@ class CommentForm extends React.Component
 
     handelSubmit(values)
     {
-        this.props.addComment(this.props.dishId,values.rating,values.author,values.comment);
+        this.props.postComment(this.props.dishId,values.rating,values.author,values.comment);
         this.toggleModal();
     }
 
@@ -119,7 +119,7 @@ class CommentForm extends React.Component
         );
     }
 
-    function RenderComments({comments,dishId,addComment})
+    function RenderComments({comments,dishId,postComment})
     {
         if(comments!=null)
         {   
@@ -136,7 +136,7 @@ class CommentForm extends React.Component
                             );
                         })}
                     </ul>
-                    <CommentForm dishId={dishId} addComment={addComment}/>
+                    <CommentForm dishId={dishId} postComment={postComment}/>
                 </div>
             );
         }
@@ -183,7 +183,7 @@ class CommentForm extends React.Component
                     </div>
                     <div className="row">
                         <RenderDish dish={props.dish}/>
-                        <RenderComments comments={props.comments} dishId={props.dish.id} addComment={props.addComment}/>
+                        <RenderComments comments={props.comments} dishId={props.dish.id} postComment={props.postComment}/>
                     </div>
                 </div>
             );           
