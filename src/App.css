@@ -24,6 +24,25 @@
 .navbar-dark {
   background-color: #512DA8;
 }
+/*Animations*/
+.page-enter{
+  opacity: 0.01;
+  transform: translateX(-100%);
+}
+.page-enter-active{
+  opacity: 1;
+  transform: translateX(0%);
+  transition: all 300ms ease-in;
+}
+.page-exit{
+  opacity: 1;
+  transform: translateX(0%);
+}
+.page-exit-active{
+  opacity: 0.1;
+  transform: translateX(100%) ;
+  transition: all 300ms ease-out;
+}
 /*--Tags--*/
 address{
   font-size:80%;
@@ -73,3 +92,4 @@ address{
   box-shadow: 0 0 0 .2rem #222
 }
 */
+

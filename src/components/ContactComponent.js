@@ -84,6 +84,7 @@ class Contact extends React.Component
                                 <Label className="col-12 col-md-2" htmlFor="firstname">First Name</Label>
                                 <Col md={10}>
                                     <Control.text 
+                                    persist={true}
                                     model=".firstname" 
                                     id="firstname" 
                                     name="firstname" 
@@ -109,6 +110,7 @@ class Contact extends React.Component
                                 <Label className="col-12 col-md-2" htmlFor="lastname">Lasst Name</Label>
                                 <Col md={10}>
                                     <Control.text
+                                    persist={true}
                                     model=".lastname" 
                                     id="lastname" 
                                     name="lastname"
@@ -133,6 +135,7 @@ class Contact extends React.Component
                                 <Label className="col-12 col-md-2" htmlFor="telnum">Contact Tel.</Label>
                                 <Col md={10}>
                                     <Control.text 
+                                    persist={true}
                                     model=".telnum" 
                                     id="telnum" 
                                     name="telnum" 
@@ -159,7 +162,7 @@ class Contact extends React.Component
                             <Row className="form-group">
                                 <Label className="col-12 col-md-2" htmlFor="email">Email</Label>
                                 <Col md={10}>
-                                    <Control.text model=".email" 
+                                    <Control.text persist={true} model=".email" 
                                     id="email" 
                                     name="email" 
                                     placeholder="Email Id" 
@@ -182,7 +185,7 @@ class Contact extends React.Component
                                 <Col md={{size: 6, offset: 2}}>
                                     <div className="form-check">
                                         <Label check>
-                                            <Control.checkbox model=".agree"
+                                            <Control.checkbox persist={true} model=".agree"
                                                 name="agree"
                                                className="form-check-input" /> {' '}
                                             <strong>May we contact you?</strong>
@@ -190,7 +193,7 @@ class Contact extends React.Component
                                     </div>
                                 </Col>
                                 <Col md={{size: 3, offset: 1}}>
-                                    <Control.select model=".contactType" name="contactType"
+                                    <Control.select model=".contactType" persist={true} name="contactType"
                                             className="form-control"
                                             >
                                         <option>Tel.</option>
@@ -201,7 +204,7 @@ class Contact extends React.Component
                             <Row className="form-group">
                                 <Label htmlFor="message" className="col-12 col-md-2">Your Feedback</Label>
                                 <Col md={10}>
-                                    <Control.textarea model=".message" 
+                                    <Control.textarea model=".message" persist={true}
                                     rows="12" 
                                     id="message" 
                                     name="message" 
